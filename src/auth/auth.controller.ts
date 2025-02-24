@@ -45,9 +45,6 @@ export class AuthController {
   }
 
 
-
-
-
   @Post('sign-out')
   @UseGuards(AuthGuard)
   @HttpCode(HttpStatus.OK)
