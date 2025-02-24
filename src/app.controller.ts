@@ -1,5 +1,4 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
 import { ApiDefaultResponse, ApiOkResponse, ApiProperty } from '@nestjs/swagger';
 import { User } from '@prisma/client';
 import { DbService } from './db/db.service';
@@ -12,7 +11,7 @@ class HelloWorldDto {
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService, private dbService: DbService) { }
+  constructor(private dbService: DbService) { }
 
   @Get()
   @ApiOkResponse({
