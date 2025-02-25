@@ -40,7 +40,7 @@ export class BlockListController {
     type: BlockItemDto
   })
   removeBlockItem(
-    @Param('idn', ParseIntPipe) id: number,
+    @Param('id', ParseIntPipe) id: number,
     @SessionInfo() session: GetSessionDto
   ): Promise<BlockItemDto> {
     return this.blockListService.removeItem(session.id, id)
