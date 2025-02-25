@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,11 +8,10 @@ datasource db {
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
-  email String @unique
-  hash  String
-  salt  String
-
+  id        Int        @id @default(autoincrement())
+  email     String     @unique
+  hash      String
+  salt      String
   account   Account?
   BlockList BlockList?
 }
@@ -26,33 +19,25 @@ model User {
 model Account {
   id                Int     @id @default(autoincrement())
   isBlockingEnabled Boolean
-
-  ownerId Int  @unique
-  owner   User @relation(fields: [ownerId], references: [id])
+  ownerId           Int     @unique
+  owner             User    @relation(fields: [ownerId], references: [id])
 }
 
 model BlockList {
-  id Int @id @default(autoincrement())
-
-  ownerId Int  @unique
-  owner   User @relation(fields: [ownerId], references: [id])
-
-  items BlockItem[]
+  id      Int         @id @default(autoincrement())
+  ownerId Int         @unique
+  items   BlockItem[]
+  owner   User        @relation(fields: [ownerId], references: [id])
 }
 
 model BlockItem {
-  id Int @id @default(autoincrement())
-
+  id          Int           @id @default(autoincrement())
   blockListId Int
-  blockList   BlockList @relation(fields: [blockListId], references: [id])
-
-  type BlockItemType
-  data String 
-
-  createdAt DateTime @default(now())
+  type        BlockItemType
+  data        String
+  createdAt   DateTime      @default(now())
+  blockList   BlockList     @relation(fields: [blockListId], references: [id])
 }
-
-
 
 enum BlockItemType {
   WebSite
