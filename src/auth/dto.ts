@@ -16,7 +16,7 @@ export class SignUpBodyDto {
 }
 
 
-export class SignIpBodyDto {
+export class SignInBodyDto {
     @ApiProperty({
         example: 'test@gmail.com'
     })
