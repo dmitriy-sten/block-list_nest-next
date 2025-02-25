@@ -12,7 +12,7 @@ export class AccountDto {
 
     @ApiProperty()
     @IsBoolean()
-    isBlocking: boolean
+    isBlockingEnabled: boolean
 }
 
 
@@ -20,5 +20,5 @@ export class PatchAccountDto {
     @ApiProperty()
     @IsBoolean()
     @IsOptional()
-    isBlocking: boolean
+    isBlockingEnabled: boolean
 }
