@@ -13,8 +13,15 @@ async function bootstrap() {
   const docs = SwaggerModule.createDocument(app, config)
   SwaggerModule.setup('api', app, docs)
 
+  app.setGlobalPrefix('api');
   app.use(cookieParser())
   app.useGlobalPipes(new ValidationPipe())
+  app.enableCors({
+    origin: 'http://localhost:3001',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  });
+
+  app.enableCors(['*'])
 
   await app.listen(process.env.PORT ?? 3000);
 }
