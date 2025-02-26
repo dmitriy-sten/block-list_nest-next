@@ -1,7 +1,10 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
 export const apiInstance = axios.create({
-    baseURL: process.env.NEXT_API_URL,
+    baseURL: process.env.NEXT_PUBLIC_API_URL,
+    headers: {
+        'Content-Type': 'application/json'
+    }
 
 })
 
@@ -17,3 +20,9 @@ export const createInstance = async <T>
 
     }).then(r => r.data)
 }
+
+
+
+export type BodyType<Data> = Data
+
+export type ErrorType<Error> = AxiosError<Error>
