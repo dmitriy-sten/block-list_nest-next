@@ -7,12 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "api:download":"wget http://localhost:3000/api-yaml -O ./src/shared/api/schema.yaml",
-    "api:generate":"orval"
+    "api:download": "wget http://localhost:3000/api-yaml -O ./src/shared/api/schema.yaml",
+    "api:generate": "orval"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.66.9",
     "axios": "^1.7.9",
+    "clsx": "^2.1.1",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

@@ -1,21 +1,27 @@
 import clsx from "clsx";
-import React, { InputHTMLAttributes, PropsWithoutRef, useId } from "react";
+import React, { PropsWithoutRef, SelectHTMLAttributes, useId } from "react";
+
+export type UiSelectOptions = {
+  value: string;
+  label: string;
+};
 
 interface Props {
   className?: string;
   error?: string;
   label?: string;
-  inputProps?: PropsWithoutRef<InputHTMLAttributes<HTMLInputElement>>;
+  selectProps?: PropsWithoutRef<SelectHTMLAttributes<HTMLSelectElement>>;
+  options: UiSelectOptions[];
 }
 
-export const UiTextField: React.FC<Props> = ({
+export const UiSelectField: React.FC<Props> = ({
   className,
   label,
   error,
-  inputProps,
+  selectProps,
+  options,
 }) => {
   const id = useId();
-
   return (
     <div className={clsx("flex flex-col gap-1", className)}>
       {label && (
@@ -23,15 +29,20 @@ export const UiTextField: React.FC<Props> = ({
           {label}
         </label>
       )}
-      <input
-        type="text"
-        {...inputProps}
+      <select
+        {...selectProps}
         id={id}
         className={clsx(
-          inputProps?.className,
+          selectProps?.className,
           "rounded border border-slate-300 focus:border-teal-600 px-2 h-10 outline-0"
         )}
-      />
+      >
+        {options.map((option, i) => (
+          <option key={i} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
       {error && <div className="text-red-400 text-sm">{error}</div>}
     </div>
   );
