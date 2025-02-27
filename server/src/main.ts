@@ -9,19 +9,27 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
 
-  const config = new DocumentBuilder().setTitle('Block list').build()
+  const config = new DocumentBuilder()
+    .setTitle('Block list')
+    .addServer('/api')
+
+    .build()
+
   const docs = SwaggerModule.createDocument(app, config)
   SwaggerModule.setup('api', app, docs)
 
-  app.setGlobalPrefix('api');
+  app.setGlobalPrefix('api',);
   app.use(cookieParser())
   app.useGlobalPipes(new ValidationPipe())
-  app.enableCors({
-    origin: 'http://localhost:3001',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  });
 
-  app.enableCors(['*'])
+
+  app.enableCors({
+    origin: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+});
+
+
 
   await app.listen(process.env.PORT ?? 3000);
 }
