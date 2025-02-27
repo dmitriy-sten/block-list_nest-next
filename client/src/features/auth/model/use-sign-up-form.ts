@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 
 
 
-
 export const useSignUpForm = () => {
     const { push } = useRouter();
 

@@ -34,7 +34,6 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   async signIn(@Body() body: SignInBodyDto,
     @Res({ passthrough: true }) res: Response) {
-    console.log('bad pwd');
 
     const { accessToken } = await this.authService.signIn(
       body.email,

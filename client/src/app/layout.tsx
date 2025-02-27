@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Provider } from "./_provider";
+import { Provider } from "./_providers/provider";
 import { UiHeader } from "@/shared/ui/ui-header";
 import Link from "next/link";
 import { ROUTES } from "@/shared/constants/routes";
+import { SignOutButton } from "@/features/auth";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,9 +36,9 @@ export default function RootLayout({
           <div className="min-h-screen w-screen flex flex-col bg-slate-100">
             <UiHeader
               right={
-                <div className="flex gap-2">
+                <div className="flex gap-2 items-center">
                   <Link href={ROUTES.home}>Home</Link>
-                  <Link href={ROUTES.signUp}>Sign Up</Link>
+                  <SignOutButton/>
                 </div>
               }
             />

@@ -22,10 +22,10 @@ export const UiButton: React.FC<Props> = ({
         {
           primary:
             "text-white bg-teal-500 hover:bg-teal-600 disabled:opacity-50 shadow shadow-teal-500/30",
-          outlined:
-            "text-white bg-rose-500 hover:bg-rose-600 disabled:opacity-50 shadow shadow-rose-500/30",
           secondary:
-            "border border-slate-300 hover:bg-slate-500 hover:text-white disabled:opacity-50",
+            "text-white bg-rose-500 hover:bg-rose-600 disabled:opacity-50 shadow shadow-rose-500/30",
+          outlined:
+            "border border-slate-300 hover:border-slate-500  disabled:opacity-50",
         }[variant]
       )}
       {...props}
