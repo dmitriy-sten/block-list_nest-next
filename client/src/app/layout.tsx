@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Provider } from "./_provider";
 import { UiHeader } from "@/shared/ui/ui-header";
+import Link from "next/link";
+import { ROUTES } from "@/shared/constants/routes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +33,14 @@ export default function RootLayout({
       >
         <Provider>
           <div className="min-h-screen w-screen flex flex-col bg-slate-100">
-            <UiHeader />
+            <UiHeader
+              right={
+                <div className="flex gap-2">
+                  <Link href={ROUTES.home}>Home</Link>
+                  <Link href={ROUTES.signUp}>Sign Up</Link>
+                </div>
+              }
+            />
             {children}
           </div>
         </Provider>

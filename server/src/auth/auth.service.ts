@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, HttpException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
 import { PasswordService } from './password.service';
 import { JwtService } from '@nestjs/jwt';
@@ -36,13 +36,13 @@ export class AuthService {
     async signIn(email: string, password: string) {
         const user = await this.userService.findByEmail(email)
         if (!user) {
-            throw new UnauthorizedException()
+            throw new BadRequestException('Invalid username or password')
         }
         const hash = this.passwortService.getHash(password, user.salt)
 
 
         if (hash !== user.hash) {
-            throw new UnauthorizedException()
+            throw new BadRequestException('Invalid username or password')
         }
 
         const accessToken = await this.jwtService.signAsync({

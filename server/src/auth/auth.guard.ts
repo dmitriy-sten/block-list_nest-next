@@ -29,6 +29,7 @@ export class AuthGuard implements CanActivate {
       req['session'] = sessinInfo
     }
     catch {
+      
       throw new UnauthorizedException()
 
     }

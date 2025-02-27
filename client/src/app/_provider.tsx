@@ -1,14 +1,29 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import React, { useState } from "react";
 
 interface Props {
-  className?: string;
   children: React.ReactNode;
 }
 
-export const Provider: React.FC<Props> = ({ className, children }) => {
+
+interface ApiError {
+  message:string
+}
+
+type AxiosApiError = AxiosError<ApiError>;
+
+declare module "@tanstack/react-query" {
+  interface Register {
+    defaultError: AxiosApiError;
+  }
+}
+
+
+
+export const Provider: React.FC<Props> = ({ children }) => {
   const [client] = useState(
     () =>
       new QueryClient({
