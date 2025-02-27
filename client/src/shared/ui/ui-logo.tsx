@@ -7,9 +7,9 @@ interface Props {
 
 export const UiLogo: React.FC<Props> = ({ className }) => {
   return (
-    <div className={clsx("flex items-center gap-2 text-xl", className)}>
-      <Beaker className="size-12 min-w-12"  />
-      <p> Easy Block</p>
+    <div className={clsx("flex items-center gap-2 text-xl w-fit", className)}>
+      <Beaker className="size-10 min-w-10"  />
+      <p className="text-2xl font-semibold"> Easy Block</p>
     </div>
   );
 };
