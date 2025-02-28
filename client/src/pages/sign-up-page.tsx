@@ -4,5 +4,10 @@ import { UiHeader } from "@/shared/ui/ui-header";
 import React from "react";
 
 export const SignUpPage: React.FC = () => {
-  return <UiFormLayout title="Sign Up" form={<SignUpForm />} />;
+  return (
+    <>
+      <UiHeader />
+      <UiFormLayout title="Sign Up" form={<SignUpForm />} />;
+    </>
+  );
 };
