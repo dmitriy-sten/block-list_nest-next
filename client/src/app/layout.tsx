@@ -34,14 +34,6 @@ export default function RootLayout({
       >
         <Provider>
           <div className="min-h-screen w-screen flex flex-col bg-slate-100">
-            <UiHeader
-              right={
-                <div className="flex gap-2 items-center">
-                  <Link href={ROUTES.home}>Home</Link>
-                  <SignOutButton/>
-                </div>
-              }
-            />
             {children}
           </div>
         </Provider>
