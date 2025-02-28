@@ -1,10 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  reactStrictMode: false,
   async rewrites() {
     return [
       {
-        source:'/',
+        source: '/',
         destination: process.env.NEXT_PUBLIC_API_URL ?? ''
       }
     ]
