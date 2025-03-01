@@ -34,7 +34,7 @@ export const UiSelectField: React.FC<Props> = ({
         id={id}
         className={clsx(
           selectProps?.className,
-          "rounded border border-slate-300 focus:border-teal-600 px-2 h-10 outline-0"
+          "rounded border border-slate-300 focus:border-teal-600 px-4 h-10 outline-0"
         )}
       >
         {options.map((option, i) => (

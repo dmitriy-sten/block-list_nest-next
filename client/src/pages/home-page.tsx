@@ -1,24 +1,14 @@
 "use client";
 
-import { useSessionQuery } from "@/entities/session/queries";
-import { SignOutButton } from "@/features/auth";
+import { AddBlockItemForm, BlockList } from "@/features/block-list";
 import { ToggleBlockingButton } from "@/features/toggle-blocking/ui/toggle-blocking-button";
-import {
-  authControllerGetSessionInfo,
-  authControllerSignIn,
-} from "@/shared/api/generated";
-import { ROUTES } from "@/shared/constants/routes";
-import { UiButton } from "@/shared/ui/ui-button";
+
 import { UiHeader } from "@/shared/ui/ui-header";
 import { Profile } from "@/widgets/profile";
-import Link from "next/link";
-import React from "react";
 
-interface Props {
-  className?: string;
-}
 
-export const HomePage: React.FC<Props> = ({ className }) => {
+export const HomePage: React.FC = () => {
+
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -27,7 +17,11 @@ export const HomePage: React.FC<Props> = ({ className }) => {
           <aside className="px-5 pt-10">
             <ToggleBlockingButton />
           </aside>
-          <main>...</main>
+          <main className="pt-10 px-5">
+            <h1 className="text-2xl mb-8">Block list</h1>
+            <AddBlockItemForm/>
+            <BlockList className="mt-3" />
+          </main>
         </div>
       </div>
     </>

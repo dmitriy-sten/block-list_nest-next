@@ -8,7 +8,8 @@ export function useBlockListQuery({ q }: { q: string }) {
 
     return useQuery({
         queryFn: () => blockListControllerGetList({ q }),
-        queryKey: blockListKey.concat([{ q }])
+        queryKey: blockListKey.concat([{ q }]),
+        placeholderData: (data) => data
     })
 }
 

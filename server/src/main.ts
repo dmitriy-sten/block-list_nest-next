@@ -12,8 +12,10 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Block list')
     .addServer('/api')
-
     .build()
+
+
+  
 
   const docs = SwaggerModule.createDocument(app, config)
   SwaggerModule.setup('api', app, docs)
